@@ -1,26 +1,22 @@
-name: Webpage Build
+name: first
 
-on:
-  push:
-    branches:
-      - webpage 
+on: push
 
 jobs:
-  build:
+  job1:
+    name: First job
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: setup node
-      uses: actions/setup-node@v2-beta
-      with:
-        node-version: '12'
-    - name: install deps and predeploy
-      run: |
-        npm ci
-        npm run predeploy
-    - name: Deploy 
-      uses: JamesIves/github-pages-deploy-action@3.5.2
-      with:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        BRANCH: gh-pages
-        FOLDER: build
+      - name: Step one
+        uses: actions/checkout@v3
+      - name: Step two
+        run: env | sort
+  job2:
+    name: Second job
+    runs-on: windows-latest
+    needs: job1
+    steps:
+      - name: Step one
+        uses: actions/checkout@v3
+      - name: Step two
+        run: "Get-ChildItem Env: | Sort-Object Name"
