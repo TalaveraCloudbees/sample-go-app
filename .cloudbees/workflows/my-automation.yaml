@@ -10,16 +10,13 @@ jobs:
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
         name: Say hello
-        kind: build
         shell: sh
         run: |
-          echo "hello world!"
+          echo "hello world!!"
       - uses: cloudbees-io/checkout@v1
         name: Checkout
-        kind: build
       - uses: docker://golang:1.20.3-alpine3.17
         name: Compute version
-        kind: test
         id: compute-version
         shell: sh
         run: |
