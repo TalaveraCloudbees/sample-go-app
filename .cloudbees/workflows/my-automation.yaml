@@ -37,6 +37,6 @@ jobs:
         kind: deploy
         run: echo "Pretending to deploy version ${{ needs.build.outputs.version }} to
           namespace ${{ vars.DEPLOY_NAMESPACE }} using token ${{
-          secrets.DEPLOY_TOKEN }}"
+          secrets.DEPLOY_TOKEN }}" && sleep 10s
     needs:
       - build
